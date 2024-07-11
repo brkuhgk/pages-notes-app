@@ -8,17 +8,24 @@ import {
 import Root from "./routes/root.jsx";
 import ErrorPage from "./error-page.jsx";
 import Page from "./routes/page.jsx";
+import {getNameByPagesId, getPagesName} from "./pages.js";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root />,
+        loader: getPagesName,
+
         errorElement: <ErrorPage />,
         children: [
             {
-                path: "contacts/:contactId",
+                path: "pages/:pageId",
                 element: <Page />,
+                loader: ({params}) =>{
+                    return getNameByPagesId(params.pageId);
+                }
+
             },
         ],
 

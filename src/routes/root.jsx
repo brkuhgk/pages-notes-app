@@ -1,6 +1,8 @@
-import {Link, Outlet} from "react-router-dom";
+import {Link, Outlet, useLoaderData} from "react-router-dom";
 
 export default function Root() {
+    const pages = useLoaderData();
+
     return (
         <>
             <div id="sidebar">
@@ -31,10 +33,10 @@ export default function Root() {
                 <nav>
                     <ul>
                         <li>
-                            <Link to={`/contacts/1`}>Your Page</Link>
+                            <Link to={`/pages/1`}>{pages[0]}</Link>
                         </li>
                         <li>
-                            <Link to={`/contacts/2`}>Your Page 2</Link>
+                            <Link to={`/pages/2`}>{pages[1]}</Link>
                         </li>
                     </ul>
                 </nav>
